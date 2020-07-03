@@ -25,7 +25,7 @@ yield *array;
 
 ## The benchmark
 
-[The benchmark](index.js) initializes `10,000` vectors vectors, and then computes a square sum of the `x` dimension
+[The benchmark](arrayIterators.js) initializes `10,000` vectors vectors, and then computes a square sum of the `x` dimension
 
 ``` js
 for(let v of vectors) {
@@ -55,7 +55,8 @@ Fastest is for (let i = 0; i < array.length; ++i) cb(array[i])
 
 ### Set iterators
 We also performed the same set of tests with a `Set` object. Obviously, we couldn't do plain old
-`for` loop, but the rest of the approaches are still applicable:
+`for` loop, but the rest of the approaches are still applicable. Here `iterators` were consistently
+the fastest.
 
 ```
 node setIterators.js
@@ -67,6 +68,8 @@ Fastest is iterator
 ```
 
 ### Map iterators
+
+Again, iterators were faster with maps than any other iteration method:
 
 ``` 
 node mapIterators.js
