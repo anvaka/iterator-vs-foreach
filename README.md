@@ -84,6 +84,13 @@ Fastest is iterator
 
 If you want to add other tests - please do so. Pull requests are very much welcomed!
 
+## Other benchmarks
+
+* [Array vs Object](https://github.com/anvaka/array-vs-object) - what is faster:
+store array of vectors, or encode vectors into array?
+* [Set vs Object](https://github.com/anvaka/set-vs-object) - what is faster:
+use object fields or Map/Set collections?
+
 ## License
 
 MIT
