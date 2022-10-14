@@ -42,15 +42,15 @@ Iterators and generators were consistently the slowest.
 
 ``` 
 > node --version
-v14.4.0
+v16.4.0
 
 > node arrayIterators.js
-array.forEach(cb) x 3,171 ops/sec ±7.49% (72 runs sampled)
-for (let i = 0; i < array.length; ++i) cb(array[i]) x 4,989 ops/sec ±5.30% (85 runs sampled)
-for (let item of array) cb(item) x 4,711 ops/sec ±3.82% (82 runs sampled)
-iterator x 2,880 ops/sec ±4.22% (76 runs sampled)
-yield * x 1,498 ops/sec ±1.45% (86 runs sampled)
-Fastest is for (let i = 0; i < array.length; ++i) cb(array[i])
+array.forEach(cb) x 4,064 ops/sec ±12.47% (59 runs sampled)
+for (let i = 0; i < array.length; ++i) cb(array[i]) x 6,181 ops/sec ±12.71% (70 runs sampled)
+for (let item of array) cb(item) x 6,121 ops/sec ±8.85% (68 runs sampled)
+iterator x 3,380 ops/sec ±6.61% (77 runs sampled)
+yield * x 2,099 ops/sec ±2.61% (87 runs sampled)
+Fastest is for (let item of array) cb(item)
 ```
 
 ### Set iterators
