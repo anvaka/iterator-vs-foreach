@@ -1,8 +1,8 @@
 {
   "name": "set-vs-object",
   "version": "1.0.0",
-  "description": "Comparing performance of Set vs Object for counting objects",
-  "main": "index.js",
+  "description": "Comparing performance of iterators",
+  "main": "arrayIterators.js",
   "scripts": {
     "test": "node arrayIterators.js"
   },
