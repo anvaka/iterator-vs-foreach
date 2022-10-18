@@ -38,6 +38,14 @@ class VectorCollection {
   *yielder() {
     yield *this.buffer;
   }
+
+  entriesForOfLoop(callback) {
+    for (let item of this.buffer.entries()) callback(item);
+  }
+
+  valuesForOfLoop(callback) {
+    for (let item of this.buffer.values()) callback(item);
+  }
 }
 
 let nativeSum = 0;
@@ -45,6 +53,9 @@ let forLoop = 0;
 let forOfLoop = 0;
 let iterator = 0;
 let yielder = 0;
+let entriesForOfLoop = 0;
+let entriesForOfLoopKV = 0;
+let valuesForOfLoop = 0;
 let testCollection = new VectorCollection(10000);
 
 suite.add('map.forEach(cb)', function() {
@@ -71,6 +82,24 @@ suite.add('map.forEach(cb)', function() {
     yielder += v[1].x * v[1].x
   };
 })
+.add('entriesForOfLoop', function() {
+  entriesForOfLoop = 0;
+  testCollection.entriesForOfLoop(v => {
+    entriesForOfLoop += v[1].x * v[1].x
+  });
+})
+.add('entriesForOfLoopKV', function() {
+  entriesForOfLoopKV = 0;
+  testCollection.entriesForOfLoop(([k,v]) => {
+    entriesForOfLoopKV += v.x * v.x
+  });
+})
+.add('valuesForOfLoop', function() {
+  valuesForOfLoop = 0;
+  testCollection.valuesForOfLoop(v => {
+    valuesForOfLoop += v.x * v.x
+  });
+})
 .on('cycle', function(event) {
   console.log(String(event.target));
 })
@@ -79,7 +108,10 @@ suite.add('map.forEach(cb)', function() {
   console.log('')
   if ((forOfLoop !== nativeSum) || 
      (iterator !== nativeSum) ||
-     (yielder !== nativeSum)
+     (yielder !== nativeSum) ||
+     (entriesForOfLoop !== nativeSum) ||
+     (entriesForOfLoopKV !== nativeSum) ||
+     (valuesForOfLoop !== nativeSum)
      ) throw new Error('Invalid test. Sums do not match');
 })
 .run({ 'async': true });
