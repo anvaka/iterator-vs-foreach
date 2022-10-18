@@ -1,6 +1,8 @@
 var Benchmark = require('benchmark');
 var suite = new Benchmark.Suite;
 
+if (typeof process !== 'undefined') console.log('Running in node', process.version);
+
 class Vector {
   constructor(x, y, z) {
     this.x = x;
