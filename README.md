@@ -68,13 +68,17 @@ Fastest is iterator
 
 Again, iterators were faster with maps than any other iteration method:
 
-``` 
-node mapIterators.js
-map.forEach(cb) x 2,214 ops/sec ±4.71% (68 runs sampled)
-for (let item of map) cb(item) x 2,060 ops/sec ±9.39% (62 runs sampled)
-iterator x 2,454 ops/sec ±5.68% (62 runs sampled)
-yield * x 838 ops/sec ±8.09% (54 runs sampled)
-Fastest is iterator
+```
+» node mapIterators.js
+Running in node v16.4.0
+map.forEach(cb) x 5,135 ops/sec ±2.69% (86 runs sampled)
+for (let item of map) cb(item) x 5,486 ops/sec ±3.41% (83 runs sampled)
+iterator x 4,904 ops/sec ±1.97% (84 runs sampled)
+yield * x 1,962 ops/sec ±1.49% (88 runs sampled)
+entriesForOfLoop x 5,855 ops/sec ±1.62% (87 runs sampled)
+entriesForOfLoopKV x 4,040 ops/sec ±3.32% (84 runs sampled)
+valuesForOfLoop x 8,280 ops/sec ±3.37% (84 runs sampled)
+Fastest is valuesForOfLoop
 ```
 
 ## Feedback
