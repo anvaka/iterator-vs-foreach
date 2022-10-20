@@ -35,11 +35,6 @@ for(let v of vectors) {
 
 ## Results
 
-Are inconclusive. Most of the time plain old `for (let i = 0; i < array.length; ++i)` wins, but quite often `for .. of`
-and `array.forEach()` take the first place.
-
-Iterators and generators were consistently the slowest.
-
 ``` 
 Running in node v16.4.0
 array.forEach(cb) x 6,751 ops/sec ±7.00% (81 runs sampled)
@@ -51,22 +46,22 @@ Fastest is for (let i = 0; i < array.length; ++i) cb(array[i]),array.forEach(cb)
 ```
 
 ### Set iterators
+
 We also performed the same set of tests with a `Set` object. Obviously, we couldn't do plain old
-`for` loop, but the rest of the approaches are still applicable. Here `iterators` were consistently
-the fastest.
+`for` loop, but the rest of the approaches are still applicable.
 
 ```
-node setIterators.js
-set.forEach(cb) x 3,340 ops/sec ±3.35% (84 runs sampled)
-for (let item of set) cb(item) x 4,364 ops/sec ±5.84% (77 runs sampled)
-iterator x 5,919 ops/sec ±1.90% (85 runs sampled)
-yield * x 1,616 ops/sec ±2.47% (87 runs sampled)
-Fastest is iterator
+node setIterators.js 
+Running in node v16.4.0
+set.forEach(cb) x 5,545 ops/sec ±2.04% (86 runs sampled)
+for (let item of set) cb(item) x 8,019 ops/sec ±4.93% (83 runs sampled)
+iterator x 5,580 ops/sec ±12.76% (68 runs sampled)
+yield * x 2,063 ops/sec ±6.32% (82 runs sampled)
+Fastest is for (let item of set) cb(item)
 ```
 
 ### Map iterators
 
-Again, iterators were faster with maps than any other iteration method:
 
 ```
 » node mapIterators.js
