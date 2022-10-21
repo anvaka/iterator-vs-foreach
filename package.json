@@ -4,7 +4,7 @@
   "description": "Comparing performance of iterators",
   "main": "arrayIterators.js",
   "scripts": {
-    "test": "node arrayIterators.js"
+    "test": "node arrayIterators.js && node mapIterators.js && node setIterators.js"
   },
   "author": "Andrei Kashcha",
   "license": "MIT",
